@@ -3,7 +3,7 @@ import rigoImage from "../../img/rigo-baby.jpg";
 import "../../styles/home.css";
 import { Cards } from "../component/cards";
 import { Context } from "../store/appContext";
-
+import starwarsImage from "../../img/star-wars.png";
 
 export const Home = () => {
 	
@@ -11,8 +11,8 @@ export const Home = () => {
 	return(
 	// Contenedor Padre de lo personajes "Characters"
 	<>
-		<div className="text-center mt-5">
-			<h1>Characters</h1>
+		<h1>Characters</h1>
+		<div className="fatherCharacter d-flex text-center mt-5">
 			{store.characters.map((character) => {
 				return(<Cards img={rigoImage} item={character.properties} key={character._id} />)
 				})}
