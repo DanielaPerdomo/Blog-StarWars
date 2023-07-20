@@ -18,7 +18,7 @@ export const Home = () => {
 				})}
 			
 		</div>
-
+		{/* Contenedor Padre de lo planetas "Planets" */}
 		<div className="Planets">
 
 		</div>
