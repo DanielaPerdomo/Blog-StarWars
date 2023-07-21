@@ -11,7 +11,7 @@ export const Home = () => {
 	return(
 	// Contenedor Padre de lo personajes "Characters"
 	<>
-		<h1>Characters</h1>
+		<h1 className="tittleCharacter text-danger"><strong>Characters</strong></h1>
 		<div className="fatherCharacter d-flex text-center mt-5">
 			{store.characters.map((character) => {
 				return(<Cards img={rigoImage} item={character.properties} key={character._id} />)

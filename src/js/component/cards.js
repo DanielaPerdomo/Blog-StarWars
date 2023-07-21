@@ -7,13 +7,16 @@ export const Cards = (props) => {
 		<div className="card" style={{ minWidth: "18rem" }}>
 			<img src={`${props.img}`} className="card-img-top" alt="..." />
 			<div className="card-body">
-				<h5 className="card-title">{name}</h5>
-				<p className="card-text">Gender: {gender}</p>
-				<p className="card-text">Eye-Color: {eye_color}</p>
-				<p className="card-text">Hair-Color: {hair_color}</p>
-				<a href="#" className="btn btn-primary">Learn More!</a>
-				<i class="fa-regular fa-heart"></i>
+				<h4 className="text-start"><strong> {name} </strong></h4>
+				{/* <p className="text-start m-0" >Gender: {gender} </p>
+				<p className="text-start m-0">Eye-Color: {eye_color} </p>
+				<p className="text-start">Hair-Color: {hair_color} </p> */}
+				{/* <div className="btnSection d-flex"> */}
+				<a href="#" className="btn btn-light text-primary border border-primary border-3 float-start"> Learn More! </a>
+				<button type="button" className="btn btn-light text-warning border border-warning border-3 float-end"><i class="iconFav fa-regular fa-heart" /></button>
+				{/* </div> */}
 			</div>
 		</div>
 	)
 };
+
