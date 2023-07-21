@@ -4,7 +4,7 @@ import React, { Component } from "react";
 export const Cards = (props) => {
 	const { name, gender, hair_color, eye_color } = props.item
 	return (
-		<div className="card" style={{ minWidth: "18rem" }}>
+		<div className="card" style={{ minWidth: "20rem" }}>
 			<img src={`${props.img}`} className="card-img-top" alt="..." />
 			<div className="card-body">
 				<h4 className="text-start"><strong> {name} </strong></h4>
