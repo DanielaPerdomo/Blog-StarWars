@@ -2,7 +2,7 @@ import React, { Component } from "react";
 // import rigoImage from "../../img/rigo-baby.jpg";
 
 export const Cards = (props) => {
-	const { name, gender, hair_color, eye_color, population, terrain } = props.item
+	const { name, gender, hair_color, eye_color, population, terrain } = props.item;
 	return (
 		<div className="card" style={{ minWidth: "20rem" }}>
 			<img src={`${props.img}`} className="card-img-top" alt="..." />
@@ -22,6 +22,7 @@ export const Cards = (props) => {
 						</>
 					)
 				}
+				
 				<div className="btnSection d-flex">
 					<a href="#" className="btn btn-light text-primary border border-primary border-3 float-start"> Learn More! </a>
 					<button type="button" className="btn btn-light text-warning border border-warning border-3 float-end"><i className="iconFav fa-regular fa-heart" /></button>
