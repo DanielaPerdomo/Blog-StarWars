@@ -17,7 +17,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 						data.results.forEach(async (element) => {
 							let responseElement = await fetch(`${store.API_URL}/people/${element.uid}`)
 							let dataItem = await responseElement.json()
-							console.log(dataItem)
+							
 							setStore({characters: [...store.characters , dataItem.result ]  })
 						});
 					}
@@ -35,7 +35,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 						data.results.forEach(async (element) => {
 							let responseElement = await fetch(`${store.API_URL}/planets/${element.uid}`)
 							let dataItem = await responseElement.json()
-							console.log(dataItem)
+							
 							setStore({planets: [...store.planets , dataItem.result ]  })
 						});
 					}
