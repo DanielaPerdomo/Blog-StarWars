@@ -1,27 +1,52 @@
-import React from "react";
+import React, { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import starwarsImage from "../../img/star-wars.png";
+import { Context } from "../store/appContext";
 
 export const Navbar = () => {
+	const { store, actions } = useContext(Context);
 	return (
-		<nav className="navbar navbar-light bg-light mb-3">
+		<nav className="navbar navbar-dark bg-dark ">
 			<Link to="/">
-			<img className="icon h-50 d-inline-block" src={starwarsImage} />
+				<img className="icon h-50 d-inline-block" src={starwarsImage} />
 			</Link>
-			<div className="ml-auto">
-				<Link to="/demo">
-					<div className="btn-group">
-						<button type="button" className="btn btn-lg btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-							Favorites
-							<i className="fa-solid fa-heart"></i>
-						</button>
-						<ul className="dropdown-menu dropdown-menu-end">
-							<li><button className="dropdown-item" type="button">Acción<i className="fa-solid fa-trash-can"></i></button></li>
-							<li><button className="dropdown-item" type="button">Otra acción<i className="fa-solid fa-trash-can"></i></button></li>
-							<li><button className="dropdown-item" type="button">Algo más aqui<i className="fa-solid fa-trash-can"></i></button></li>
-						</ul>
+			<div className="">
+				<div className="dropdown ">
+					<button
+						className="btn btn-primary dropdown-toggle"
+						type="button"
+						data-bs-toggle="dropdown"
+						data-bs-auto-close="false"
+						aria-expanded="false">
+						Favorites
+						<span className="badge badge-dark">{store.favorites.length}</span>
+					</button>
+					<div className="dropdown-menu dropdown-menu-end">
+						{store.favorites.length > 0 ? (
+							store.favorites.map((name, index) => (
+								<div
+									key={index}
+									className="wrap d-flex justify-content-around">
+									<span
+										className="dropdown-item">
+										{name}
+									</span>
+									<button
+										type="button" 
+										className="btn btn-light pr-2"
+										onClick={() => {
+											actions.deleteFavorites(index);
+										}}
+									>
+										<i className="fa-solid fa-trash"></i>
+									</button>
+								</div>
+							))
+						) : (
+							<span className="dropdown-item ">Empty</span>
+						)}
 					</div>
-				</Link>
+				</div>
 			</div>
 		</nav>
 	);

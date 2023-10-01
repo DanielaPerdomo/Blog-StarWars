@@ -3,6 +3,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 		store: {
 			characters: [],
 			planets: [],
+			favorites: [],
 			API_URL: "https://www.swapi.tech/api",
 		},
 
@@ -43,6 +44,16 @@ const getState = ({ getStore, getActions, setStore }) => {
 					console.log(error)
 				}
 
+			},
+			addFavorites: (name) => {
+				const store = getStore();
+				const favorites = [...store.favorites, name];
+				setStore({favorites});
+			},
+			deleteFavorites: (index) => {
+				const store = getStore();
+				const updateFavorites = store.favorites.filter((_, filterIndex) => filterIndex !== index);
+				setStore({ favorites: updateFavorites});
 			},
 		}
 	};

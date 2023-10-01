@@ -1,14 +1,22 @@
-import React, { Component } from "react";
+import React, { Component, useContext } from "react";
 import { Link } from "react-router-dom";
-// import rigoImage from "../../img/rigo-baby.jpg";
+// import "../../styles/home.css";
+import { useNavigate } from "react-router";
+import { Context } from "../store/appContext";
+
 
 export const Cards = (props) => {
+	const { actions } = useContext(Context)
+	const navigate = useNavigate()
+	const addFavorites = (characterName) => {
+		actions.addFavorites(characterName);
+	}
 	const { name, gender, hair_color, eye_color, population, terrain } = props.item;
 	const errorHandler = (event) => {
 		event.target.src = "https://starwars-visualguide.com/assets/img/placeholder.jpg"
 	}
 	return (
-		<div className="card" style={{ minWidth: "20rem" }}>
+		<div className="card bg-secondary" style={{ minWidth: "20rem" }}>
 			<img src={`${props.img}`} className="card-img-top" alt={`${name}`} onError={errorHandler} />
 			<div className="card-body">
 				<h4 className="text-start"><strong> {name} </strong></h4>
@@ -27,9 +35,16 @@ export const Cards = (props) => {
 					)
 				}
 
-				<div className="btnSection d-flex">
-					<Link to={`/details/${props.type}/${props.id}`} className="btn btn-light text-primary border border-primary border-3 float-start"> Learn More! </Link>
-					<button type="button" className="btn btn-light text-warning border border-warning border-3 float-end"><i className="iconFav fa-regular fa-heart" /></button>
+				<div className="btnSection d-flex justify-content-between pt-2 align-item-end mt-5">
+					<Link to={`/details/${props.type}/${props.id}`} className="btn btn-outline-dark  border border-dark border-3 align-item-end float-start"> Learn More! </Link>
+
+					<button
+						type="button"
+						className="btn btn-outline-warning border border-warning border-3  float-end" 
+						onClick={() => {
+							addFavorites(props.name);
+						}}
+						><i className="iconFav fa-regular fa-heart" /></button>
 				</div>
 			</div>
 		</div>
